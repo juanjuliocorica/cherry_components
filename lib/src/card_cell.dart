@@ -9,8 +9,8 @@ class CardCell extends StatelessWidget {
   final EdgeInsets padding;
 
   const CardCell({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.padding = const EdgeInsets.all(16),
   })  : assert(child != null),
         assert(padding != null),
@@ -19,11 +19,11 @@ class CardCell extends StatelessWidget {
   /// Custom [CardCell] design, specifically for page headings.
   factory CardCell.header(
     BuildContext context, {
-    Key key,
-    Widget leading,
-    @required String title,
-    List<Widget> subtitle,
-    String details,
+    Key? key,
+    Widget? leading,
+    required String title,
+    List<Widget>? subtitle,
+    String? details,
     EdgeInsets padding = const EdgeInsets.all(16),
   }) {
     return CardCell(
@@ -48,7 +48,7 @@ class CardCell extends StatelessWidget {
                           title,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context).textTheme.headline6.copyWith(
+                          style: Theme.of(context).textTheme.headline6!.copyWith(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
                               ),
@@ -80,9 +80,9 @@ class CardCell extends StatelessWidget {
   /// Custom [CardCell] design, specifically for page body.
   factory CardCell.body(
     BuildContext context, {
-    Key key,
-    @required String title,
-    @required Widget child,
+    Key? key,
+    required String title,
+    required Widget child,
     EdgeInsets padding = const EdgeInsets.all(16),
   }) {
     return CardCell(
@@ -97,7 +97,7 @@ class CardCell extends StatelessWidget {
                 maxLines: 1,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.headline6.copyWith(
+                style: Theme.of(context).textTheme.headline6!.copyWith(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),

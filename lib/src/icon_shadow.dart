@@ -11,7 +11,7 @@ class IconShadow extends StatelessWidget {
 
   /// Padding to apply to the icon.
   /// Defaults to 'zero'.
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   /// Shadow size for the shadow map.
   /// - Small equals to [2] of blur radius.
@@ -20,11 +20,11 @@ class IconShadow extends StatelessWidget {
 
   /// Color of the shadow to apply.
   /// Defaults to theme's [primaryColor].
-  final Color shadowColor;
+  final Color? shadowColor;
 
   const IconShadow(
     this.icon, {
-    Key key,
+    Key? key,
     this.padding,
     this.shadowSize = ShadowSize.small,
     this.shadowColor,

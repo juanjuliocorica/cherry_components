@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 /// Widget similar to [ListCell] that represents more information
 /// about a specific theme. It also features expandable description text.
 class DetailsCell extends StatelessWidget {
-  final String leading, title, subtitle, body;
-  final VoidCallback onTap;
+  final String? leading, title, subtitle, body;
+  final VoidCallback? onTap;
 
   const DetailsCell({
-    Key key,
+    Key? key,
     this.leading,
-    @required this.title,
+    required this.title,
     this.subtitle,
-    @required this.body,
+    required this.body,
     this.onTap,
   }) : super(key: key);
 
@@ -46,13 +46,13 @@ class DetailsCell extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          leading,
-                          style: Theme.of(context).textTheme.headline6.copyWith(
+                          leading!,
+                          style: Theme.of(context).textTheme.headline6!.copyWith(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                                 color: Theme.of(context)
                                     .accentTextTheme
-                                    .subtitle1
+                                    .subtitle1!
                                     .color,
                               ),
                           overflow: TextOverflow.clip,
@@ -69,9 +69,9 @@ class DetailsCell extends StatelessWidget {
                         space: Space.superSmall,
                         children: [
                           Text(
-                            title,
+                            title!,
                             style:
-                                Theme.of(context).textTheme.subtitle1.copyWith(
+                                Theme.of(context).textTheme.subtitle1!.copyWith(
                                       fontWeight: FontWeight.bold,
                                     ),
                             overflow: TextOverflow.ellipsis,
@@ -79,7 +79,7 @@ class DetailsCell extends StatelessWidget {
                           ),
                           if (subtitle != null)
                             Text(
-                              subtitle,
+                              subtitle!,
                               style: Theme.of(context).textTheme.bodyText2,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
@@ -91,11 +91,11 @@ class DetailsCell extends StatelessWidget {
                   if (onTap != null)
                     Icon(
                       Icons.chevron_right,
-                      color: Theme.of(context).textTheme.caption.color,
+                      color: Theme.of(context).textTheme.caption!.color,
                     ),
                 ],
               ),
-              if (body != null) ExpandText(body),
+              if (body != null) ExpandText(body!),
             ],
           ),
         ),

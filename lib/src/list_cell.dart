@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 /// Widget similar to [ListTile] with custom theme
 /// and constructors.
 class ListCell extends StatelessWidget {
-  final Widget leading, trailing;
-  final String title, subtitle;
-  final VoidCallback onTap;
-  final EdgeInsets contentPadding;
+  final Widget? leading, trailing;
+  final String? title, subtitle;
+  final VoidCallback? onTap;
+  final EdgeInsets? contentPadding;
   final bool dense;
 
   const ListCell({
-    Key key,
+    Key? key,
     this.leading,
     this.trailing,
-    @required this.title,
+    required this.title,
     this.subtitle,
     this.onTap,
     this.contentPadding,
@@ -24,13 +24,13 @@ class ListCell extends StatelessWidget {
   /// Builds a [ListCell] using a [IconData] object as the leading
   /// widget.
   factory ListCell.icon({
-    Key key,
-    @required IconData icon,
-    Widget trailing,
-    @required String title,
-    String subtitle,
-    VoidCallback onTap,
-    EdgeInsets contentPadding,
+    Key? key,
+    required IconData icon,
+    Widget? trailing,
+    required String title,
+    String? subtitle,
+    VoidCallback? onTap,
+    EdgeInsets? contentPadding,
     bool dense = false,
   }) {
     return ListCell(
@@ -53,8 +53,8 @@ class ListCell extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            title,
-            style: Theme.of(context).textTheme.subtitle1.copyWith(
+            title!,
+            style: Theme.of(context).textTheme.subtitle1!.copyWith(
                   fontWeight: subtitle != null ? FontWeight.bold : null,
                 ),
             overflow: TextOverflow.ellipsis,
@@ -66,9 +66,9 @@ class ListCell extends StatelessWidget {
       subtitle: subtitle == null
           ? null
           : Text(
-              subtitle,
-              style: Theme.of(context).textTheme.bodyText2.copyWith(
-                    color: Theme.of(context).textTheme.caption.color,
+              subtitle!,
+              style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                    color: Theme.of(context).textTheme.caption!.color,
                   ),
             ),
       trailing: onTap != null && trailing == null
@@ -86,14 +86,14 @@ class ListCell extends StatelessWidget {
 class TrailingText extends StatelessWidget {
   final String data;
 
-  const TrailingText(this.data, {Key key}) : super(key: key);
+  const TrailingText(this.data, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       data,
-      style: Theme.of(context).textTheme.bodyText2.copyWith(
-            color: Theme.of(context).textTheme.caption.color,
+      style: Theme.of(context).textTheme.bodyText2!.copyWith(
+            color: Theme.of(context).textTheme.caption!.color,
           ),
     );
   }

@@ -13,11 +13,11 @@ const kDialogContentPadding = const EdgeInsets.symmetric(horizontal: 20);
 
 /// Function that builds a centered-rounded dialog. It contains a title, with a
 /// predefined text style, and a varietude of children.
-Future<T> showRoundDialog<T>({
-  @required BuildContext context,
-  @required String title,
-  @required List<Widget> children,
-  List<DialogAction> actions,
+Future<T?> showRoundDialog<T>({
+  required BuildContext context,
+  required String title,
+  required List<Widget> children,
+  List<DialogAction>? actions,
   bool barrierDismissible = true,
   Color barrierColor = Colors.black54,
   EdgeInsets padding = kDialogContentPadding,
@@ -45,11 +45,11 @@ Future<T> showRoundDialog<T>({
 
 /// Function that builds a bottom-rounded dialog. It contains a title, with a
 /// predefined text style, and a varietude of children.
-Future<T> showBottomRoundDialog<T>({
-  @required BuildContext context,
-  @required String title,
-  @required List<Widget> children,
-  List<DialogAction> actions,
+Future<T?> showBottomRoundDialog<T>({
+  required BuildContext context,
+  required String title,
+  required List<Widget> children,
+  List<DialogAction>? actions,
   bool barrierDismissible = true,
   Color barrierColor = Colors.black54,
   bool enableDrag = true,
@@ -78,18 +78,18 @@ Future<T> showBottomRoundDialog<T>({
 
 /// Private class that builds the internal structure of a rounded dialog.
 class _RoundDialog extends StatelessWidget {
-  final String title;
-  final List<Widget> children;
+  final String? title;
+  final List<Widget>? children;
   final bool isBottomDialog;
-  final List<DialogAction> actions;
-  final EdgeInsets padding;
+  final List<DialogAction>? actions;
+  final EdgeInsets? padding;
 
   factory _RoundDialog.center({
-    Key key,
-    @required String title,
-    @required List<Widget> children,
-    List<DialogAction> actions,
-    EdgeInsets padding,
+    Key? key,
+    required String title,
+    required List<Widget> children,
+    List<DialogAction>? actions,
+    EdgeInsets? padding,
   }) {
     return _RoundDialog._(
       key: key,
@@ -102,11 +102,11 @@ class _RoundDialog extends StatelessWidget {
   }
 
   factory _RoundDialog.bottom({
-    Key key,
-    @required String title,
-    @required List<Widget> children,
-    List<DialogAction> actions,
-    EdgeInsets padding,
+    Key? key,
+    required String title,
+    required List<Widget> children,
+    List<DialogAction>? actions,
+    EdgeInsets? padding,
   }) {
     return _RoundDialog._(
       key: key,
@@ -119,7 +119,7 @@ class _RoundDialog extends StatelessWidget {
   }
 
   const _RoundDialog._({
-    Key key,
+    Key? key,
     this.title,
     this.children,
     this.isBottomDialog = false,
@@ -144,10 +144,10 @@ class _RoundDialog extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  title.toUpperCase(),
+                  title!.toUpperCase(),
                   style: Theme.of(context)
                       .textTheme
-                      .headline6
+                      .headline6!
                       .copyWith(fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
@@ -156,7 +156,7 @@ class _RoundDialog extends StatelessWidget {
                 child: SingleChildScrollView(
                   padding: padding,
                   child: ListBody(
-                    children: children,
+                    children: children!,
                   ),
                 ),
               ),
@@ -165,7 +165,7 @@ class _RoundDialog extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     children: [
-                      for (final action in actions)
+                      for (final action in actions!)
                         SizedBox(
                           width: double.infinity,
                           child: OutlinedButton(
@@ -182,7 +182,7 @@ class _RoundDialog extends StatelessWidget {
                                         action.type == DialogActionType.primary
                                             ? Theme.of(context)
                                                 .accentTextTheme
-                                                .headline6
+                                                .headline6!
                                                 .color
                                             : action.type ==
                                                     DialogActionType.secondary
@@ -212,7 +212,7 @@ class _RoundDialog extends StatelessWidget {
                                                     DialogActionType.secondary
                                                 ? Theme.of(context)
                                                     .textTheme
-                                                    .caption
+                                                    .caption!
                                                     .color
                                                 : Colors.white,
                                     backgroundColor:
@@ -224,7 +224,7 @@ class _RoundDialog extends StatelessWidget {
                                                 : Colors.red,
                                     textStyle: Theme.of(context)
                                         .textTheme
-                                        .subtitle1
+                                        .subtitle1!
                                         .copyWith(fontWeight: FontWeight.bold),
                                   ),
                             child: Text(action.title),
@@ -249,11 +249,11 @@ enum DialogActionType { primary, secondary, dangerous }
 /// rounded dialog. It's displayed via a [OutlinedButton].
 class DialogAction {
   final String title;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final DialogActionType type;
 
   const DialogAction({
-    @required this.title,
+    required this.title,
     this.onTap,
     this.type = DialogActionType.primary,
   })  : assert(title != null),
