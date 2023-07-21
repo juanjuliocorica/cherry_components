@@ -130,9 +130,7 @@ class _RoundDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      minimum: isBottomDialog
-          ? EdgeInsets.only(bottom: 42)
-          : EdgeInsets.only(bottom: 20),
+      minimum: isBottomDialog ? EdgeInsets.only(bottom: 42) : EdgeInsets.only(bottom: 20),
       bottom: false,
       child: Padding(
         padding: EdgeInsets.only(top: 20),
@@ -145,10 +143,7 @@ class _RoundDialog extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   title!.toUpperCase(),
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline6!
-                      .copyWith(fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -169,63 +164,45 @@ class _RoundDialog extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: OutlinedButton(
-                            style: Theme.of(context).brightness ==
-                                    Brightness.light
+                            style: Theme.of(context).brightness == Brightness.light
                                 ? OutlinedButton.styleFrom(
+                                    foregroundColor: action.type == DialogActionType.primary
+                                        ? Theme.of(context).colorScheme.secondary
+                                        // .accentTextTheme
+                                        // .headline6!
+                                        // .color
+                                        : action.type == DialogActionType.secondary
+                                            ? Theme.of(context).colorScheme.secondary
+                                            : Colors.white,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
-                                        Radius.circular(
-                                            kDialogActionButtonRadius),
+                                        Radius.circular(kDialogActionButtonRadius),
                                       ),
                                     ),
-                                    primary:
-                                        action.type == DialogActionType.primary
-                                            ? Theme.of(context)
-                                                .accentTextTheme
-                                                .headline6!
-                                                .color
-                                            : action.type ==
-                                                    DialogActionType.secondary
-                                                ? Theme.of(context).accentColor
-                                                : Colors.white,
-                                    backgroundColor:
-                                        action.type == DialogActionType.primary
-                                            ? Theme.of(context).accentColor
-                                            : action.type ==
-                                                    DialogActionType.secondary
-                                                ? null
-                                                : Colors.red,
-                                    textStyle:
-                                        Theme.of(context).textTheme.subtitle1,
+                                    backgroundColor: action.type == DialogActionType.primary
+                                        ? Theme.of(context).colorScheme.secondary
+                                        : action.type == DialogActionType.secondary
+                                            ? null
+                                            : Colors.red,
+                                    textStyle: Theme.of(context).textTheme.titleMedium,
                                   )
                                 : OutlinedButton.styleFrom(
+                                    foregroundColor: action.type == DialogActionType.primary
+                                        ? Colors.black
+                                        : action.type == DialogActionType.secondary
+                                            ? Theme.of(context).textTheme.bodySmall!.color
+                                            : Colors.white,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
-                                        Radius.circular(
-                                            kDialogActionButtonRadius),
+                                        Radius.circular(kDialogActionButtonRadius),
                                       ),
                                     ),
-                                    primary:
-                                        action.type == DialogActionType.primary
-                                            ? Colors.black
-                                            : action.type ==
-                                                    DialogActionType.secondary
-                                                ? Theme.of(context)
-                                                    .textTheme
-                                                    .caption!
-                                                    .color
-                                                : Colors.white,
-                                    backgroundColor:
-                                        action.type == DialogActionType.primary
-                                            ? Colors.white
-                                            : action.type ==
-                                                    DialogActionType.secondary
-                                                ? null
-                                                : Colors.red,
-                                    textStyle: Theme.of(context)
-                                        .textTheme
-                                        .subtitle1!
-                                        .copyWith(fontWeight: FontWeight.bold),
+                                    backgroundColor: action.type == DialogActionType.primary
+                                        ? Colors.white
+                                        : action.type == DialogActionType.secondary
+                                            ? null
+                                            : Colors.red,
+                                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
                                   ),
                             child: Text(action.title),
                             onPressed: action.onTap,
@@ -256,6 +233,5 @@ class DialogAction {
     required this.title,
     this.onTap,
     this.type = DialogActionType.primary,
-  })  : assert(title != null),
-        assert(type != null);
+  });
 }

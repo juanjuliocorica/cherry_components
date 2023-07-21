@@ -37,23 +37,24 @@ class DetailsCell extends StatelessWidget {
                       height: 40,
                       width: 40,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).accentColor.withOpacity(0.65),
+                        color: Theme.of(context).colorScheme.secondary.withOpacity(0.65),
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: Theme.of(context).accentColor,
+                          color: Theme.of(context).colorScheme.secondary,
                           width: 3,
                         ),
                       ),
                       child: Center(
                         child: Text(
                           leading!,
-                          style: Theme.of(context).textTheme.headline6!.copyWith(
+                          style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color: Theme.of(context)
-                                    .accentTextTheme
-                                    .subtitle1!
-                                    .color,
+                                color: Theme.of(context).colorScheme.secondary,
+                                // color: Theme.of(context)
+                                //     .accentTextTheme
+                                //     .subtitle1!
+                                //     .color,
                               ),
                           overflow: TextOverflow.clip,
                           maxLines: 1,
@@ -70,17 +71,16 @@ class DetailsCell extends StatelessWidget {
                         children: [
                           Text(
                             title!,
-                            style:
-                                Theme.of(context).textTheme.subtitle1!.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                           ),
                           if (subtitle != null)
                             Text(
                               subtitle!,
-                              style: Theme.of(context).textTheme.bodyText2,
+                              style: Theme.of(context).textTheme.bodyMedium,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                             ),
@@ -91,7 +91,7 @@ class DetailsCell extends StatelessWidget {
                   if (onTap != null)
                     Icon(
                       Icons.chevron_right,
-                      color: Theme.of(context).textTheme.caption!.color,
+                      color: Theme.of(context).textTheme.bodySmall!.color,
                     ),
                 ],
               ),

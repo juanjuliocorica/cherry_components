@@ -54,7 +54,7 @@ class ListCell extends StatelessWidget {
         children: [
           Text(
             title!,
-            style: Theme.of(context).textTheme.subtitle1!.copyWith(
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
                   fontWeight: subtitle != null ? FontWeight.bold : null,
                 ),
             overflow: TextOverflow.ellipsis,
@@ -67,8 +67,8 @@ class ListCell extends StatelessWidget {
           ? null
           : Text(
               subtitle!,
-              style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                    color: Theme.of(context).textTheme.caption!.color,
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: Theme.of(context).textTheme.bodySmall!.color,
                   ),
             ),
       trailing: onTap != null && trailing == null
@@ -92,8 +92,8 @@ class TrailingText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       data,
-      style: Theme.of(context).textTheme.bodyText2!.copyWith(
-            color: Theme.of(context).textTheme.caption!.color,
+      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            color: Theme.of(context).textTheme.bodySmall!.color,
           ),
     );
   }

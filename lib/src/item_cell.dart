@@ -29,15 +29,15 @@ class ItemCell extends StatelessWidget {
           Icon(
             icon,
             size: 16,
-            color: Theme.of(context).textTheme.caption!.color,
+            color: Theme.of(context).textTheme.bodySmall!.color,
           ),
           Separator.spacer(Space.small),
           Flexible(
             child: Text(
               text,
               overflow: textOverflow,
-              style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                    color: Theme.of(context).textTheme.caption!.color,
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: Theme.of(context).textTheme.bodySmall!.color,
                     decoration: onTap == null
                         ? TextDecoration.none
                         : TextDecoration.underline,

@@ -26,20 +26,20 @@ class RadioCell<T> extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         color:
-            _isChecked ? Theme.of(context).accentColor.withOpacity(0.24) : null,
+            _isChecked ? Theme.of(context).colorScheme.secondary.withOpacity(0.24) : null,
         child: Row(
           children: [
             Icon(
               _isChecked ? Icons.check_circle : Icons.panorama_fish_eye,
               size: _kRadioSize,
               color: _isChecked
-                  ? Theme.of(context).accentColor
-                  : Theme.of(context).textTheme.caption!.color,
+                  ? Theme.of(context).colorScheme.secondary
+                  : Theme.of(context).textTheme.bodySmall!.color,
             ),
             Separator.spacer(Space.large),
             Text(
               title,
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.titleMedium,
             ),
           ],
         ),
