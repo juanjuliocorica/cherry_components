@@ -12,7 +12,7 @@ class CardCell extends StatelessWidget {
     Key? key,
     required this.child,
     this.padding = const EdgeInsets.all(16),
-  })  : super(key: key);
+  }) : super(key: key);
 
   /// Custom [CardCell] design, specifically for page headings.
   factory CardCell.header(
@@ -89,17 +89,16 @@ class CardCell extends StatelessWidget {
       child: Column(
         children: Separator.spaceChildren(
           children: [
-            if (title != null)
-              Text(
-                title.toUpperCase(),
-                maxLines: 1,
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-              ),
+            Text(
+              title.toUpperCase(),
+              maxLines: 1,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+            ),
             child
           ],
         ),
